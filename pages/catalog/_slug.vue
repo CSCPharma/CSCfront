@@ -949,19 +949,19 @@ export default {
   },
   computed: {
     torgovoeNazvanieCurrLocale() {
-      return this.torgovoeNazvanie; //|| this.torgovoeNazvanie_en;
+      return this.torgovoeNazvanie || this.torgovoeNazvanie_en;
     },
     descriptionCurrLocale() {
-      return this.description; //|| this.description_en;
+      return this.description || this.description_en;
     },
     lekarstvennayaFormaCurrLocale() {
-      return this.lekarstvennayaForma; //|| this.lekarstvennayaForma_en;
+      return this.lekarstvennayaForma || this.lekarstvennayaForma_en;
     },
     nepatentovannoeNaimenovanieCurrLocale() {
-      return this.nepatentovannoeNaimenovanie; //|| this.nepatentovannoeNaimenovanie_en
+      return this.nepatentovannoeNaimenovanie || this.nepatentovannoeNaimenovanie_en
     },
     manufacturerTitleCurrLocale() {
-      return this.pill.manufacturer.title; //|| this.pill.manufacturer.title_en;
+      return this.pill.manufacturer.title || this.pill.manufacturer.title_en;
     },
     locale() {
       return this.$store.state.locale;
