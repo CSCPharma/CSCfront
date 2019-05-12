@@ -958,7 +958,9 @@ export default {
       return this.lekarstvennayaForma || this.lekarstvennayaForma_en;
     },
     nepatentovannoeNaimenovanieCurrLocale() {
-      return this.nepatentovannoeNaimenovanie || this.nepatentovannoeNaimenovanie_en
+      return (
+        this.nepatentovannoeNaimenovanie || this.nepatentovannoeNaimenovanie_en
+      );
     },
     manufacturerTitleCurrLocale() {
       return this.pill.manufacturer.title || this.pill.manufacturer.title_en;
