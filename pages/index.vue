@@ -206,7 +206,7 @@
               v-if="item.link && item.logo"
               :href="item.link"
               target="_blank"
-              class="display-flex ma-auto px-4 my-3 mb-5 flex"
+              class="display-flex ma-auto px-4 my-3 mb-5 flex align-center"
             >
               <img class="d-block ma-auto" v-lazy="imageBaseUrl+item.logo.url" :alt="item.title">
             </a>
