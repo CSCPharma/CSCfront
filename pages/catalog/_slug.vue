@@ -704,7 +704,7 @@ export default {
             sort: "itemsOrder:ask"
             where: { slug: ["story", "charity", "mission", "team"] }
           ) {
-            title_en
+            title
             slug
           }
           bgPage: pages(where: { slug: "catalog" }) {
