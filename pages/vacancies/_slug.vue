@@ -242,17 +242,9 @@ export default {
           to: this.localePath("index")
         },
         {
-          text: this.$store.state.locale.aboutUs,
+          text: this.$store.state.locale.vacancies,
           to: this.localePath("vacancies")
         },
-        // {
-        //   text: "Главная",
-        //   to: "/"
-        // },
-        // {
-        //   text: "Вакансии",
-        //   to: "/vacancies"
-        // },
         {
           text: this.page.title,
           to: this.$route.path
