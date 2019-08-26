@@ -321,7 +321,7 @@
                 ripple
                 v-for="item in pill.Articles"
                 :key="item.url"
-                :href="item.url"
+                :href="imageBaseUrl+item.url"
                 target="_blank"
                 class="attachments-wrapper layout mb-3 display-flex"
               >
