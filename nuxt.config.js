@@ -332,7 +332,7 @@ module.exports = {
    ** Build configuration
    */
   build: {
-    publicPath: '/js/',
+    // publicPath: '/js/',
     // vendor: ["@babel/polyfill"],
     // plugins: [
     //   new VuetifyLoaderPlugin(),
