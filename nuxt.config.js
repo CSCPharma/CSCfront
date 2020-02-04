@@ -1,5 +1,5 @@
 // const pkg = require('./package')
-const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
+// const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 const axios = require('axios')
 // const nuxti18n = require('nuxt-i18n')
 // console.log("TCL: nuxti18n", nuxti18n({
@@ -150,9 +150,9 @@ module.exports = {
         content: "CSC - это энергично развивающаяся фармацевтическая компания полного цикла, использующая передовые технологии фарминдустрии."
       }
     ],
-    script: [{
-      src: 'https://polyfill.io/v3/polyfill.min.js?flags=gated%7Calways&rum=true&features=default%2CObject.values%2CMath.cbrt%2CSymbol%2CSymbol.hasInstance%2CSymbol.isConcatSpreadable%2CSymbol.iterator%2CSymbol.match%2CSymbol.replace%2CSymbol.search%2CSymbol.species%2CSymbol.split%2CSymbol.toPrimitive%2CSymbol.toStringTag%2CSymbol.unscopables%2CArray.prototype.findIndex'
-    }, ],
+    // script: [{
+    //   src: 'https://polyfill.io/v3/polyfill.min.js?flags=gated%7Calways&rum=true&features=default%2CObject.values%2CMath.cbrt%2CSymbol%2CSymbol.hasInstance%2CSymbol.isConcatSpreadable%2CSymbol.iterator%2CSymbol.match%2CSymbol.replace%2CSymbol.search%2CSymbol.species%2CSymbol.split%2CSymbol.toPrimitive%2CSymbol.toStringTag%2CSymbol.unscopables%2CArray.prototype.findIndex'
+    // }, ],
     link: [{
         rel: 'icon',
         type: 'image/x-icon',
@@ -214,6 +214,19 @@ module.exports = {
    ** Nuxt.js modules
    */
   modules: [
+    // ['@nuxtjs/vuetify',
+    //   {
+    //     theme: {
+    //       primary: '#121212', // a color that is not in the material colors palette
+    //       accent: '#006DF0',
+    //       secondary: "#11333A",
+    //       // info: colors.teal.lighten1,
+    //       // warning: colors.amber.base,
+    //       // error: colors.deepOrange.accent4,
+    //       // success: colors.green.accent3
+    //     },
+    //   }
+    // ],
     // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     '@nuxtjs/apollo',
@@ -248,10 +261,10 @@ module.exports = {
       // lazy: true,
       // langDir: 'lang/'
     }],
-    ['@nuxtjs/component-cache', {
-      max: 10000,
-      maxAge: 1000 * 60 * 60
-    }],
+    // ['@nuxtjs/component-cache', {
+    //   max: 10000,
+    //   maxAge: 1000 * 60 * 60
+    // }],
   ],
 
   sitemap: {
@@ -321,11 +334,20 @@ module.exports = {
   build: {
     publicPath: '/js/',
     // vendor: ["@babel/polyfill"],
-    plugins: [
-      new VuetifyLoaderPlugin(),
-    ],
-
-    transpile: [/^vuetify/, /^aos/, /^vue-awesome-swiper/, /^@nuxtjs\/apollo/, /^vue2-google-maps($|\/)/, "vue-particles"],
+    // plugins: [
+    //   new VuetifyLoaderPlugin(),
+    // ],
+    babel: {
+      sourceType: 'unambiguous',
+      "presets": [
+        ["@nuxt/babel-preset-app", {
+          "corejs": {
+            "version": 3
+          }
+        }],
+      ]
+    },
+    transpile: [/^aos/, /^vue-awesome-swiper/, /^@nuxtjs\/apollo/, "vue2-google-maps", "vue-particles", "nuxt-i18n", "vuetify"],
 
     /*
      ** You can extend webpack config here
