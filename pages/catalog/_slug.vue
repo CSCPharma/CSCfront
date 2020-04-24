@@ -308,13 +308,11 @@
               <p class="font-weight-bold">Организация принимающая претензии</p>
               <div v-html="adresPretenziy" />
             </div>
-            <div v-if="pill.instructions.length">
+            <div v-if="pill.instructions">
               <v-card
                 hover
                 ripple
-                v-for="item in pill.instructions"
-                :key="item.url"
-                :href="imageBaseUrl+item.url"
+                :href="imageBaseUrl+pill.instructions.url"
                 target="_blank"
                 class="attachments-wrapper layout display-flex"
               >
@@ -326,7 +324,7 @@
                 <v-card-title>
                   <div>
                     <p class="attachments-name mb-2">Инструкция (pdf)</p>
-                    <p class="attachments-size mb-0">{{(item.size/1000).toFixed(1)}} MB</p>
+                    <p class="attachments-size mb-0">{{(pill.instructions.size/1000).toFixed(1)}} MB</p>
                   </div>
                 </v-card-title>
               </v-card>
