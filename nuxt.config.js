@@ -138,33 +138,42 @@ module.exports = {
     titleTemplate: '%s - CSCPharma',
 
     meta: [{
-        charset: 'utf-8'
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1'
-      },
-      {
-        hid: 'description',
-        name: 'description',
-        content: "CSC - это энергично развивающаяся фармацевтическая компания полного цикла, использующая передовые технологии фарминдустрии."
-      }
+      charset: 'utf-8'
+    },
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1'
+    },
+    {
+      hid: 'description',
+      name: 'description',
+      content: "CSC - это энергично развивающаяся фармацевтическая компания полного цикла, использующая передовые технологии фарминдустрии."
+    }
     ],
     // script: [{
     //   src: 'https://polyfill.io/v3/polyfill.min.js?flags=gated%7Calways&rum=true&features=default%2CObject.values%2CMath.cbrt%2CSymbol%2CSymbol.hasInstance%2CSymbol.isConcatSpreadable%2CSymbol.iterator%2CSymbol.match%2CSymbol.replace%2CSymbol.search%2CSymbol.species%2CSymbol.split%2CSymbol.toPrimitive%2CSymbol.toStringTag%2CSymbol.unscopables%2CArray.prototype.findIndex'
     // }, ],
+    script: [{
+      src: "/rutarget.js",
+      async: true
+    }],
     link: [{
-        rel: 'icon',
-        type: 'image/x-icon',
-        href: '/favicon.ico'
-      },
-      {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&amp;subset=cyrillic'
-      }, {
-        rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css?family=Material+Icons'
-      }
+      rel: 'icon',
+      type: 'image/x-icon',
+      href: '/favicon.ico'
+    },
+    {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&amp;subset=cyrillic'
+    }, {
+      rel: 'stylesheet',
+      href: 'https://fonts.googleapis.com/css?family=Material+Icons'
+    },
+    {
+      href: "/rutarget.js",
+      rel: 'preload',
+      as: 'script'
+    }
 
     ]
   },
@@ -203,7 +212,8 @@ module.exports = {
       src: '@/plugins/aos.js',
       ssr: false
     },
-    "~/plugins/lazyload.js"
+    "~/plugins/lazyload.js",
+    { src: "~/plugins/rutarget.js", ssr: false }
     // {
     //   src: '@/plugins/apollo-fetch.js',
     //   ssr: true
@@ -247,15 +257,15 @@ module.exports = {
       // vueI18nLoader: true,
       // Options
       locales: [{
-          code: 'en',
-          iso: 'en-US',
-          // file: 'en.js'
-        },
-        {
-          code: 'ru',
-          iso: 'ru-RU',
-          // file: 'ru.js'
-        },
+        code: 'en',
+        iso: 'en-US',
+        // file: 'en.js'
+      },
+      {
+        code: 'ru',
+        iso: 'ru-RU',
+        // file: 'ru.js'
+      },
       ],
       defaultLocale: 'ru',
       // lazy: true,
