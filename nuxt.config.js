@@ -62,7 +62,7 @@ module.exports = {
     routes: async function () {
       const {
         data: aboutData
-      } = await axios.get(baseUrl + "/pages?slug=charity&slug=team&slug=mission&slug=story&slug=privacy_policy")
+      } = await axios.get(baseUrl + "/pages?slug=charity&slug=team&slug=mission&slug=story&slug=privacy_policy&slug=personal_data")
       const aboutItems = aboutData.map(item => {
         return {
           route: `/about/${item.slug}`
@@ -290,7 +290,7 @@ module.exports = {
       // const {
       //   data: aboutData
       // } = await axios.get(baseUrl + "/pages?slug=charity&slug=team&slug=mission&slug=story")
-      const aboutData = ["charity", "team", "mission", "story", "privacy_policy"]
+      const aboutData = ["charity", "team", "mission", "story", "privacy_policy", "personal_data"]
       const aboutItems = aboutData.map(item => {
         return `/about/${item}`
 
@@ -358,6 +358,7 @@ module.exports = {
       ]
     },
     transpile: [/^aos/, /^vue-awesome-swiper/, /^@nuxtjs\/apollo/, "vue2-google-maps", "vue-particles", "nuxt-i18n", "vuetify"],
+    compact: false,
 
     /*
      ** You can extend webpack config here
