@@ -152,6 +152,7 @@ export default {
       this.message = "";
       this.name = "";
       this.email = "";
+      this.terms = false;
     },
     async submit() {
       //   console.log(this.valid);
