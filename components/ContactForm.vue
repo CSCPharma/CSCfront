@@ -130,7 +130,7 @@ export default {
     },
     phone: {required, minLength: minLength(10), maxLength: maxLength(15)},
     message: {required, maxLength: maxLength(1500), minLength: minLength(3)},
-    terms: {sameAs: val => val === true}
+    terms: {sameAs: sameAs( () => true ) }
   },
   data: () => ({
     formMessage: "",
