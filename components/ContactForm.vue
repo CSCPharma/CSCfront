@@ -49,7 +49,7 @@
     ></v-textarea>
     <v-flex>
       <v-checkbox v-model="agree"
-      :label="`Я ознакомился с <a href='#'>Политикой</a> и <a href='#'>согласен(а)</a> на обработку персональных данных`">
+      :label="`Я ознакомился с Политикой и согласен(а) на обработку персональных данных`">
       </v-checkbox>
       <v-btn class="ml-0" color="white" @click="submit">{{currLocale==="ru" ? 'Отправить' : "Send"}}</v-btn>
       <v-btn flat @click="clear">{{currLocale==="ru" ? 'Очистить' : "Clear"}}</v-btn>
