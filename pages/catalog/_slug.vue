@@ -388,7 +388,7 @@
         </v-layout>
       </v-container>
     </section>
-    <div class="bottom-contraindications"><span>{{locale.catalogContraindications}}</span></div>
+    <div class="container bottom-contraindications"><span>{{locale.catalogContraindications}}</span></div>
 
     <section
       class="position-relative display-flex column"
@@ -443,6 +443,11 @@
 .main-bg {
   display: flex;
   flex-direction: column;
+}
+.bottom-contraindications {
+  position: sticky;
+  position: -webkit-sticky;
+  bottom: 0;
 }
 .v-window-item,
 .v-window__container,
