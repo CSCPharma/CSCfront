@@ -142,7 +142,7 @@ export default {
     phone: "",
     message: "",
     valid: "",
-    terms: false,
+    terms: "",
   }),
   methods: {
     clear() {
