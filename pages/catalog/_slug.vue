@@ -361,7 +361,6 @@
             </div>
           </v-tab-item>
         </v-tabs>
-        <div class="bottom-contraindications">{{locale.catalogContraindications}}</div>
         <v-layout
           style="clear:both"
           class="justify-center"
@@ -389,6 +388,7 @@
         </v-layout>
       </v-container>
     </section>
+    <div class="bottom-contraindications"><span>{{locale.catalogContraindications}}</span></div>
 
     <section
       class="position-relative display-flex column"
