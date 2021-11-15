@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="main-bg">
-      <div class="main-bg-image" :style="`background-image: url(${imageBaseUrl+page.img.url})`"></div>
+      <div class="main-bg-image" :style="page.img ? `background-image: url(${imageBaseUrl+page.img.url});` : ''"></div>
       <v-container class="position-relative fill-height ma-auto py-5">
         <v-layout>
           <v-flex class="xs12 text-xs-center">
