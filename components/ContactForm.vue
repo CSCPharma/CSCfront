@@ -49,10 +49,12 @@
     ></v-textarea>
     <v-flex>
       <v-checkbox v-model="agree"
-      :label="`Я ознакомился с Политикой и согласен(а) на обработку персональных данных`">
+                  :error-messages="agreeErrors"
+                  :label="`Я ознакомился с Политикой и согласен(а) на обработку персональных данных`"
+                  @blur="$v.agree.$touch()">
       </v-checkbox>
-      <v-btn class="ml-0" color="white" @click="submit">{{currLocale==="ru" ? 'Отправить' : "Send"}}</v-btn>
-      <v-btn flat @click="clear">{{currLocale==="ru" ? 'Очистить' : "Clear"}}</v-btn>
+      <v-btn class="ml-0" color="white" @click="submit">{{ currLocale === "ru" ? 'Отправить' : "Send" }}</v-btn>
+      <v-btn flat @click="clear">{{ currLocale === "ru" ? 'Очистить' : "Clear" }}</v-btn>
     </v-flex>
 
     <v-slide-y-transition>
@@ -61,12 +63,14 @@
           :value="this.formSuccess"
           class="flex xs12 mt-3"
           type="success"
-        >{{currLocale==="ru" ? 'Cообщение отправлено!' : "Message sent!"}}</v-alert>
+        >{{ currLocale === "ru" ? 'Cообщение отправлено!' : "Message sent!" }}
+        </v-alert>
         <v-alert
           :value="this.formError"
           class="flex xs12 mt-3"
           type="error"
-        >{{currLocale==="ru" ? 'Ошибка при отправке!' : "Error!"}}</v-alert>
+        >{{ currLocale === "ru" ? 'Ошибка при отправке!' : "Error!" }}
+        </v-alert>
       </v-flex>
     </v-slide-y-transition>
     <!-- {{formMessage}} -->
@@ -77,7 +81,7 @@
 <script>
 // import axios from "axios";
 
-import { validationMixin } from "vuelidate";
+import {validationMixin} from "vuelidate";
 import {
   required,
   maxLength,
@@ -85,19 +89,20 @@ import {
   email,
   alpha
 } from "vuelidate/lib/validators";
+
 export default {
   mixins: [validationMixin],
   validations: {
-    name: { required, maxLength: maxLength(35), minLength: minLength(3) },
-    email: { required, email },
+    name: {required, maxLength: maxLength(35), minLength: minLength(3)},
+    email: {required, email},
     subject: {
       required,
       maxLength: maxLength(35),
       minLength: minLength(3)
     },
-    phone: { required, minLength: minLength(10), maxLength: maxLength(15) },
-    message: { required, maxLength: maxLength(1500), minLength: minLength(3) },
-    agree: { sameAs: sameAs( () => true ) }
+    phone: {required, minLength: minLength(10), maxLength: maxLength(15)},
+    message: {required, maxLength: maxLength(1500), minLength: minLength(3)},
+    agree: {sameAs: sameAs(() => true)}
   },
   data: () => ({
     formMessage: "",
@@ -169,89 +174,89 @@ export default {
       const errors = [];
       if (!this.$v.name.$dirty) return errors;
       !this.$v.name.maxLength &&
-        errors.push(
-          this.currLocale === "ru" ? "Слишком длинное имя" : "Name is too long"
-        );
+      errors.push(
+        this.currLocale === "ru" ? "Слишком длинное имя" : "Name is too long"
+      );
       !this.$v.name.minLength &&
-        errors.push(
-          this.currLocale === "ru"
-            ? "Слишком короткое имя"
-            : "Name is too short"
-        );
+      errors.push(
+        this.currLocale === "ru"
+          ? "Слишком короткое имя"
+          : "Name is too short"
+      );
       !this.$v.name.required &&
-        errors.push(
-          this.currLocale === "ru" ? "Введите имя" : "Enter your name"
-        );
+      errors.push(
+        this.currLocale === "ru" ? "Введите имя" : "Enter your name"
+      );
       return errors;
     },
     emailErrors() {
       const errors = [];
       if (!this.$v.email.$dirty) return errors;
       !this.$v.email.email &&
-        errors.push(
-          this.currLocale === "ru"
-            ? "Введите корректный email"
-            : "Enter a valid email"
-        );
+      errors.push(
+        this.currLocale === "ru"
+          ? "Введите корректный email"
+          : "Enter a valid email"
+      );
       !this.$v.email.required &&
-        errors.push(this.currLocale === "ru" ? "Введите email" : "Enter email");
+      errors.push(this.currLocale === "ru" ? "Введите email" : "Enter email");
       return errors;
     },
     subjectErrors() {
       const errors = [];
       if (!this.$v.subject.$dirty) return errors;
       !this.$v.subject.maxLength &&
-        errors.push(
-          this.currLocale === "ru"
-            ? "Слишком длинная тема"
-            : "Subject is too long"
-        );
+      errors.push(
+        this.currLocale === "ru"
+          ? "Слишком длинная тема"
+          : "Subject is too long"
+      );
       !this.$v.subject.minLength &&
-        errors.push(
-          this.currLocale === "ru"
-            ? "Слишком короткая тема"
-            : "Subject is too short"
-        );
+      errors.push(
+        this.currLocale === "ru"
+          ? "Слишком короткая тема"
+          : "Subject is too short"
+      );
       !this.$v.subject.required &&
-        errors.push(
-          this.currLocale === "ru" ? "Введите тему" : "Enter subject"
-        );
+      errors.push(
+        this.currLocale === "ru" ? "Введите тему" : "Enter subject"
+      );
       return errors;
     },
     phoneErrors() {
       const errors = [];
       if (!this.$v.phone.$dirty) return errors;
       !this.$v.phone.maxLength &&
-        errors.push("Phone must be at most 15 characters long");
+      errors.push("Phone must be at most 15 characters long");
       !this.$v.phone.minLength &&
-        errors.push(
-          this.currLocale === "ru"
-            ? "Слишком короткий телефон"
-            : "Phone too short"
-        );
+      errors.push(
+        this.currLocale === "ru"
+          ? "Слишком короткий телефон"
+          : "Phone too short"
+      );
       !this.$v.phone.required &&
-        errors.push(
-          this.currLocale === "ru" ? "Введите телефон" : "Enter phone"
-        );
+      errors.push(
+        this.currLocale === "ru" ? "Введите телефон" : "Enter phone"
+      );
       return errors;
     },
     messageErrors() {
       const errors = [];
       if (!this.$v.message.$dirty) return errors;
       !this.$v.message.maxLength &&
-        errors.push(
-          this.currLocale === "ru"
-            ? "Слишком длинное сообщение"
-            : "Message too long"
-        );
+      errors.push(
+        this.currLocale === "ru"
+          ? "Слишком длинное сообщение"
+          : "Message too long"
+      );
       !this.$v.message.minLength &&
-        errors.push(
-          this.currLocale === "ru" ? "Введите сообщение" : "Message too short"
-        );
+      errors.push(
+        this.currLocale === "ru" ? "Введите сообщение" : "Message too short"
+      );
       !this.$v.message.required &&
-        errors.push(
-          this.currLocale === "ru" ? "Введите сообщение" : "Enter your message"
-        );
+      errors.push(
+        this.currLocale === "ru" ? "Введите сообщение" : "Enter your message"
+      );
       return errors;
     },
     agreeErrors() {
