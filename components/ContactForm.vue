@@ -289,7 +289,7 @@ export default {
     },
     termsErrors() {
       const errors = [];
-      console.log(this.$v.terms);
+      console.log(this.$v.terms.toString());
       if (!this.$v.terms) {
         errors.push(
           this.currLocale === "ru"
