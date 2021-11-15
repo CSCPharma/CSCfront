@@ -97,7 +97,7 @@ export default {
     },
     phone: { required, minLength: minLength(10), maxLength: maxLength(15) },
     message: { required, maxLength: maxLength(1500), minLength: minLength(3) },
-    agree: { required }
+    agree: { sameAs: sameAs( () => true ) }
   },
   data: () => ({
     formMessage: "",
@@ -252,6 +252,16 @@ export default {
         errors.push(
           this.currLocale === "ru" ? "Введите сообщение" : "Enter your message"
         );
+      return errors;
+    },
+    agreeErrors() {
+      if (!$v.agree) {
+        errors.push(
+          this.currLocale === "ru"
+            ? "Необходимо согласие"
+            : "Необходимо согласие en"
+        );
+      }
       return errors;
     }
   }
