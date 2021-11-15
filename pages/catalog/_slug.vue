@@ -449,7 +449,7 @@
   position: -webkit-sticky;
   bottom: 0;
   background: #fff;
-  opacity: 0.7;
+  opacity: .9;
   font-weight: 600;
   display: flex;
   align-items: center;
