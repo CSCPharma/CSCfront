@@ -282,7 +282,7 @@ export default {
       return errors;
     },
     termsErrors() {
-      if (!$v.terms) {
+      if (!this.$v.terms) {
         errors.push(
           this.currLocale === "ru"
             ? "Необходимо согласие"
