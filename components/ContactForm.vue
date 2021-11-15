@@ -290,6 +290,7 @@ export default {
     },
     termsErrors() {
       const errors = [];
+      if (!this.$v.terms.$dirty) return errors;
       if (!this.terms) {
         errors.push(
           this.currLocale === "ru"
