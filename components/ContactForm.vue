@@ -48,10 +48,10 @@
       @blur="$v.message.$touch()"
     ></v-textarea>
     <v-flex>
-      <v-checkbox v-model="agree"
-                  :error-messages="agreeErrors"
+      <v-checkbox v-model="terms"
+                  :error-messages="termsErrors"
                   :label="`Я ознакомился с Политикой и согласен(а) на обработку персональных данных`"
-                  @blur="$v.agree.$touch()">
+                  @blur="$v.terms.$touch()">
       </v-checkbox>
       <v-btn class="ml-0" color="white" @click="submit">{{ currLocale === "ru" ? 'Отправить' : "Send" }}</v-btn>
       <v-btn flat @click="clear">{{ currLocale === "ru" ? 'Очистить' : "Clear" }}</v-btn>
@@ -102,7 +102,7 @@ export default {
     },
     phone: {required, minLength: minLength(10), maxLength: maxLength(15)},
     message: {required, maxLength: maxLength(1500), minLength: minLength(3)},
-    agree: {sameAs: sameAs(() => true)}
+    terms: { sameAs: val => val === true }
   },
   data: () => ({
     formMessage: "",
@@ -114,7 +114,7 @@ export default {
     phone: "",
     message: "",
     valid: "",
-    agree: false,
+    terms: false,
   }),
   methods: {
     clear() {
@@ -259,8 +259,8 @@ export default {
       );
       return errors;
     },
-    agreeErrors() {
-      if (!$v.agree) {
+    termsErrors() {
+      if (!$v.terms) {
         errors.push(
           this.currLocale === "ru"
             ? "Необходимо согласие"
