@@ -54,23 +54,27 @@
         <template v-slot:label>
           <div>
             Я ознакомился с
-            <template v-slot:activator="{ on }">
-              <a
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on }">
+                <a
+                  target="_blank"
+                  href="#"
+                  @click.stop
+                  v-on="on"
+                > Политикой</a>
+              </template>
+            </v-tooltip>
+            и
+            <v-tooltip bottom>
+              <template v-slot:activator="{ on }"><a
                 target="_blank"
                 href="#"
                 @click.stop
                 v-on="on"
-              > Политикой</a>
-            </template>
-            и
-            <template v-slot:activator="{ on }"><a
-              target="_blank"
-              href="#"
-              @click.stop
-              v-on="on"
-            >согласен</a>
-              на обработку персональных данных
-            </template>
+              >согласен(а)</a>
+              </template>
+            </v-tooltip>
+            на обработку персональных данных
           </div>
         </template>
       </v-checkbox>
