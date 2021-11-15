@@ -62,6 +62,7 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <v-container class="bottom-contraindications">{{locale.catalogContraindications}}</v-container>
   </div>
 </template>
 
