@@ -50,8 +50,29 @@
     <v-flex>
       <v-checkbox v-model="terms"
                   :error-messages="termsErrors"
-                  :label="`Я ознакомился с Политикой и согласен(а) на обработку персональных данных`"
                   @blur="$v.terms.$touch()">
+        <template v-slot:label>
+          <div>
+            Я ознакомился с
+            <template v-slot:activator="{ on }">
+              <a
+                target="_blank"
+                href="#"
+                @click.stop
+                v-on="on"
+              > Политикой</a>
+            </template>
+            и
+            <template v-slot:activator="{ on }"><a
+              target="_blank"
+              href="#"
+              @click.stop
+              v-on="on"
+            >согласен</a>
+              на обработку персональных данных
+            </template>
+          </div>
+        </template>
       </v-checkbox>
       <v-btn class="ml-0" color="white" @click="submit">{{ currLocale === "ru" ? 'Отправить' : "Send" }}</v-btn>
       <v-btn flat @click="clear">{{ currLocale === "ru" ? 'Очистить' : "Clear" }}</v-btn>
@@ -87,7 +108,8 @@ import {
   maxLength,
   minLength,
   email,
-  alpha
+  alpha,
+  sameAs,
 } from "vuelidate/lib/validators";
 
 export default {
@@ -102,7 +124,7 @@ export default {
     },
     phone: {required, minLength: minLength(10), maxLength: maxLength(15)},
     message: {required, maxLength: maxLength(1500), minLength: minLength(3)},
-    terms: { sameAs: val => val === true }
+    terms: {sameAs: val => val === true}
   },
   data: () => ({
     formMessage: "",
