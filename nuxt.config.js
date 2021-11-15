@@ -62,7 +62,7 @@ module.exports = {
     routes: async function () {
       const {
         data: aboutData
-      } = await axios.get(baseUrl + "/pages?slug=charity&slug=team&slug=mission&slug=story")
+      } = await axios.get(baseUrl + "/pages?slug=charity&slug=team&slug=mission&slug=story&slug=politika")
       const aboutItems = aboutData.map(item => {
         return {
           route: `/about/${item.slug}`
@@ -290,7 +290,7 @@ module.exports = {
       // const {
       //   data: aboutData
       // } = await axios.get(baseUrl + "/pages?slug=charity&slug=team&slug=mission&slug=story")
-      const aboutData = ["charity", "team", "mission", "story"]
+      const aboutData = ["charity", "team", "mission", "story", "politika"]
       const aboutItems = aboutData.map(item => {
         return `/about/${item}`
 
