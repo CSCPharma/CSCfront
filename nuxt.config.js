@@ -62,7 +62,7 @@ module.exports = {
     routes: async function () {
       const {
         data: aboutData
-      } = await axios.get(baseUrl + "/pages?slug=charity&slug=team&slug=mission&slug=story&slug=privacy_policy&slug=personal_data")
+      } = await axios.get(baseUrl + "/pages?slug=charity&slug=team&slug=mission&slug=story")
       const aboutItems = aboutData.map(item => {
         return {
           route: `/about/${item.slug}`
@@ -71,11 +71,22 @@ module.exports = {
       const aboutItemsEn = aboutData.map(item => {
         return {
           route: `/en/about/${item.slug}`,
-
-
+        }
+      });
+      const {
+        data: pageData
+      } = await axios.get(baseUrl + "/pages?slug=privacy_policy&slug=personal_data")
+      const pageItems = pageData.map(item => {
+        return {
+          route: `/page/${item.slug}`
         }
       })
-      console.log("TCL: aboutItemsEn", aboutItemsEn)
+      const pageItemsEn = pageData.map(item => {
+        return {
+          route: `/en/page/${item.slug}`,
+        }
+      })
+      console.log("TCL: pageItemsEn", pageItemsEn)
       const {
         data: formsData
       } = await axios.get(baseUrl + "/forms")
@@ -118,7 +129,7 @@ module.exports = {
           route: item
         }
       })
-      const routes = [...staticRoutesEn, ...staticRoutes, ...aboutItems, ...aboutItemsEn, ...formsItemsEn, ...formsItems, ...vacanciesItemsEn, ...vacanciesItems]
+      const routes = [...staticRoutesEn, ...staticRoutes, ...aboutItems, ...aboutItemsEn,...pageItems, ...pageItemsEn,...formsItemsEn, ...formsItems, ...vacanciesItemsEn, ...vacanciesItems]
       // console.log("TCL: routes", routes)
       // "http://localhost:8080/forms"
       // const ruRoutes = [...aboutItems, ...formsItems, ...vacanciesItems]
@@ -290,11 +301,15 @@ module.exports = {
       // const {
       //   data: aboutData
       // } = await axios.get(baseUrl + "/pages?slug=charity&slug=team&slug=mission&slug=story")
-      const aboutData = ["charity", "team", "mission", "story", "privacy_policy", "personal_data"]
+      const aboutData = ["charity", "team", "mission", "story"]
       const aboutItems = aboutData.map(item => {
         return `/about/${item}`
+      });
+      const pageData = ["privacy_policy", "personal_data"]
+      const pageItems = pageData.map(item => {
+        return `/page/${item}`
+      });
 
-      })
       const {
         data: formsData
       } = await axios.get(baseUrl + "/forms")
@@ -310,7 +325,7 @@ module.exports = {
 
       })
       // const staticRoutes = [...staticItems, ...staticItemsEn]
-      const routes = [...aboutItems, ...formsItems, ...vacanciesItems]
+      const routes = [...aboutItems, ...formsItems, ...vacanciesItems, ...pageItems]
       // console.log("TCL: routes", routes)
       const routesEn = routes.map(item => '/en' + item)
       // console.log("TCL: routesEn", routesEn)

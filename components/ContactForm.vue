@@ -58,7 +58,7 @@
               <template v-slot:activator="{ on }">
                 <a
                   target="_blank"
-                  href="#"
+                  href="/page/personal_data"
                   @click.stop
                   v-on="on"
                 > Политикой</a>
@@ -69,7 +69,7 @@
             <v-tooltip bottom>
               <template v-slot:activator="{ on }"><a
                 target="_blank"
-                href="#"
+                href="/page/privacy_policy"
                 @click.stop
                 v-on="on"
               >согласен(а)</a>
