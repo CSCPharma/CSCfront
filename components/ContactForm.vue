@@ -63,6 +63,7 @@
                   v-on="on"
                 > Политикой</a>
               </template>
+              Откроется в новом окне
             </v-tooltip>
             и
             <v-tooltip bottom>
@@ -73,6 +74,7 @@
                 v-on="on"
               >согласен(а)</a>
               </template>
+              Откроется в новом окне
             </v-tooltip>
             на обработку персональных данных
           </div>
@@ -292,6 +294,12 @@ export default {
           this.currLocale === "ru"
             ? "Необходимо согласие"
             : "Необходимо согласие en"
+        );
+      } else {
+        errors.push(
+          this.currLocale === "ru"
+            ? "Необходимо согласие test"
+            : "Необходимо согласие test en"
         );
       }
       return errors;
