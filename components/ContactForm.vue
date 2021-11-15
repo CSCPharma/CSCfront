@@ -50,7 +50,7 @@
     <v-flex>
       <v-checkbox v-model="terms"
                   :error-messages="termsErrors"
-                  @change="$v.terms.$touch()">
+                  @blur="$v.terms.$touch()">
         <template v-slot:label>
           <div>
             Я ознакомился с
