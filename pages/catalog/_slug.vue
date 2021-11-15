@@ -361,7 +361,7 @@
             </div>
           </v-tab-item>
         </v-tabs>
-        <v-layout class="bottom-contraindications">{{locale.catalogContraindications}}</v-layout>
+        <div class="bottom-contraindications">{{locale.catalogContraindications}}</div>
         <v-layout
           style="clear:both"
           class="justify-center"
