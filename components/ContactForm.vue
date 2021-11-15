@@ -48,6 +48,9 @@
       @blur="$v.message.$touch()"
     ></v-textarea>
     <v-flex>
+      <v-checkbox v-model="agree">
+        Я ознакомился с <a href="#">Политикой</a> и <a href="#">согласен(а)</a> на обработку персональных данных
+      </v-checkbox>
       <v-btn class="ml-0" color="white" @click="submit">{{currLocale==="ru" ? 'Отправить' : "Send"}}</v-btn>
       <v-btn flat @click="clear">{{currLocale==="ru" ? 'Очистить' : "Clear"}}</v-btn>
     </v-flex>
@@ -93,7 +96,8 @@ export default {
       minLength: minLength(3)
     },
     phone: { required, minLength: minLength(10), maxLength: maxLength(15) },
-    message: { required, maxLength: maxLength(1500), minLength: minLength(3) }
+    message: { required, maxLength: maxLength(1500), minLength: minLength(3) },
+    agree: { required }
   },
   data: () => ({
     formMessage: "",
@@ -104,7 +108,8 @@ export default {
     subject: "",
     phone: "",
     message: "",
-    valid: ""
+    valid: "",
+    agree: false,
   }),
   methods: {
     clear() {
