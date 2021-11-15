@@ -50,7 +50,7 @@
     <v-flex>
       <v-checkbox v-model="terms"
                   :error-messages="termsErrors"
-                  @blur="$v.terms.$touch()">
+                  @change="$v.terms.$touch()">
         <template v-slot:label>
           <div>
             Я ознакомился с
@@ -130,7 +130,7 @@ export default {
     },
     phone: {required, minLength: minLength(10), maxLength: maxLength(15)},
     message: {required, maxLength: maxLength(1500), minLength: minLength(3)},
-    terms: {required }
+    terms: { required }
   },
   data: () => ({
     formMessage: "",
@@ -290,18 +290,11 @@ export default {
     },
     termsErrors() {
       const errors = [];
-      console.log(this.$v.terms.toString());
-      if (!this.$v.terms) {
+      if (!this.terms) {
         errors.push(
           this.currLocale === "ru"
             ? "Необходимо согласие"
             : "Необходимо согласие en"
-        );
-      } else {
-        errors.push(
-          this.currLocale === "ru"
-            ? "Необходимо согласие test"
-            : "Необходимо согласие test en"
         );
       }
       return errors;
