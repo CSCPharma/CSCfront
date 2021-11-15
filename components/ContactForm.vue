@@ -130,7 +130,7 @@ export default {
     },
     phone: {required, minLength: minLength(10), maxLength: maxLength(15)},
     message: {required, maxLength: maxLength(1500), minLength: minLength(3)},
-    terms: {sameAs: sameAs( () => true ) }
+    terms: {required }
   },
   data: () => ({
     formMessage: "",
@@ -289,6 +289,7 @@ export default {
     },
     termsErrors() {
       const errors = [];
+      console.log(this.$v.terms);
       if (!this.$v.terms) {
         errors.push(
           this.currLocale === "ru"
