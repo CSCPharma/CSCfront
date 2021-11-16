@@ -115,8 +115,8 @@
                 <div class="image-wrapper py-5 px-4 display-flex align-center">
                   <img
                     v-if="item.img"
-                    :data-src="imageBaseUrl+item.img.url"
                     :alt="item.title"
+                    v-lazy="imageBaseUrl+item.img.url"
                     class="swiper-lazy"
                   >
                   <div class="swiper-lazy-preloader"></div>
