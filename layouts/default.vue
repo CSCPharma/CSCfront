@@ -229,10 +229,19 @@ export default {
           to: "catalog",
           items: this.$store.state.pills.map(item => {
             if (item.forms.length && (item.title === 'ОКИ' || item.title === 'OKI')) {
-              item.forms.unshift(item.forms[item.forms.length-1]);
-              item.forms.pop();
+              let forms = [];
+              item.forms.map(form => {
+                if (form.slug == 'oki-act') {
+                  forms.unshift(form);
+                } else {
+                  forms.push(form);
+                }
+              });
+              item.forms = forms;
+              return item;
+            } else {
+              return item;
             }
-            return item;
           })
         },
         {
