@@ -108,7 +108,7 @@
               <v-card
                 hover
                 class="br-10 mb-5 mr-2 ml-2"
-                :to="item.forms && item.forms.length > 0 ? localePath({name: 'catalog-slug', params: {slug: item.forms[0].slug}}) : ''"
+                :to="item.forms && item.forms.length > 0 ? localePath({name: 'catalog-slug', params: {slug: item.forms[0].slug }}) : ''"
                 nuxt
                 data-aos="zoom-in"
               >
