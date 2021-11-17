@@ -228,7 +228,7 @@ export default {
           title: this.locale.catalog,
           to: "catalog",
           items: this.$store.state.pills.map(item => {
-            if (item.forms.length && item._id == '5cadf93741b7aa0c3cc48424') {
+            if (item.forms.length && (item.title === 'ОКИ' || item.title === 'OKI')) {
               item.forms.unshift(item.forms[item.forms.length-1]);
               item.forms.pop();
             }
