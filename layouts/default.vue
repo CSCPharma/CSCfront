@@ -227,17 +227,13 @@ export default {
         {
           title: this.locale.catalog,
           to: "catalog",
-          items: this.$store.state.pills
-          // .map(item => {
-          //   item.forms = item.forms.map(item => {
-          //     item.slug = this.localePath({
-          //       name: "catalog-slug",
-          //       params: { slug: item.slug }
-          //     });
-          //     return item;
-          //   });
-          //   return item;
-          // })
+          items: this.$store.state.pills.map(item => {
+            if (item.forms.length && item._id == '5cadf93741b7aa0c3cc48424') {
+              item.forms.unshift(item.forms[item.forms.length-1]);
+              item.forms.pop();
+            }
+            return item;
+          })
         },
         {
           title: this.locale.aboutUs,
