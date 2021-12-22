@@ -27,7 +27,7 @@ module.exports = {
   env: {
     baseUrl: baseUrl,
     imageBaseUrl: imageBaseUrl,
-    formFrom: process.env.FORM_FROM || 'office@cscpharma.ru',
+    formFrom: process.env.FORM_FROM || 'office@cscpharma.ru' ,
     formContactTo: process.env.FORM_CONTACT_TO || 's.sharkova@cscpharma.ru',
     formTroubleTo: process.env.FORM_TROUBLE_TO || 's.sharkova@cscpharma.ru',
   },
